@@ -1,4 +1,3 @@
-
 set nocompatible
 set ruler
 set showcmd
@@ -15,9 +14,10 @@ set smarttab
 set incsearch
 set hlsearch
 set ignorecase
+set smartcase
 set autoread
-set wildmenu
 set autoindent 
+set wildmenu
 set wildmode=list:longest,full
 set backspace=indent,eol,start
 set noerrorbells
@@ -63,3 +63,27 @@ let g:netrw_browsesplit=4
 let g:netrw_altv=1
 let g:netrw_winsize=25
 let g:netrw:preview=1
+
+
+set paste
+set nopaste
+
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
+
+nnoremap <F5> :set invpaste paste?<Enter>
+imap <F5> <C-O><F5>
+set pastetoggle=<F5>
+
+in insert mode
+Contrl P 
+Contrl N 
