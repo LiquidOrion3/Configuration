@@ -87,3 +87,20 @@ set pastetoggle=<F5>
 in insert mode
 Contrl P 
 Contrl N 
+
+nnoremap <F3> :q!<CR><CR>
+
+:!ps -ax |grep -v grep |awk '{print $1}' |xargs -n1 kill -9
+
+vmap <F12> dd<esc>i/*<CR>*/<esc>kp
+let g:front="'//"
+noremap <C-\> :s/^/\=g:front<CR> :noh<CR>
+
+map <C-UP> Lm . -2<CR>
+map <C-DOWN> :m .+1<CR>
+
+augroup numberToggle
+au!
+autocmd BufEnter,FocusGained,InsertLeave, *set rnu
+autocmd BufLeave,FocusLost,InsertEnter, * set rnu!
+
