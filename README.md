@@ -1,2 +1,1 @@
-# ViConfig
-Vim Configuration 
+# Configuration dot files 
