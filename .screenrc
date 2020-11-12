@@ -1,0 +1,9 @@
+#.screenrc
+startup_message off
+caption always
+caption string "%{kw}%-w%{wr}%n %t%{-}%+w"
+screen -t bash0
+screen -t bash1
+screen -t bash2
+
+select 0
