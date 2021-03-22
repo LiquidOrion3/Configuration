@@ -4,6 +4,7 @@ command! Cleanfile normal! :%s/\s\+$//g<CR>
 "command! FunctionTemplate
 
 "Mappings
+let mapleader =" "
 nnoremap <leader>1 :tabn 1 <CR>
 nnoremap <leader>2 :tabn 2 <CR>
 nnoremap <leader>3 :tabn 3 <CR>
@@ -14,28 +15,29 @@ nnoremap <leader>7 :tabn 7 <CR>
 nnoremap <leader>8 :tabn 8 <CR>
 nnoremap <leader>9 :tabn 9 <CR>
 nnoremap <leader>e :e ~/.vimrc<CR>
-nnoremap <leader>o :Ex<CR>
+nnoremap <leader>o :Lex <CR>
 nnoremap <leader>sr :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <leader>h :noh<CR>
 nnoremap <leader>d :bd<CR>
 nnoremap <leader>j :bnext<CR>
 nnoremap <leader>k :bprev<CR>
-nnoremap <leader>r :.1 
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
-inoremap <C-j> <Esc>:m .+1<CR>==gi
-inoremap <C-k> <Esc>:m .-2<CR>==gi
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
+nnoremap <leader>l :ls<CR>
+nnoremap <leader>r :.1
+nnoremap <leader>w <C-w>w
+nnoremap <leader>n :enew<CR>
+xnoremap K :move '<-2<CR>gv-gv
+xnoremap J :move '<+1<CR>gv-gv
 nnoremap tn :tabnew<CR>
 nnoremap tc :tabclose<CR>
 nmap ; :
 vnoremap jk <ESC>
 inoremap jk <ESC>
 map <F3> :q!<CR><CR>
-map <F4> :e % :p:s,.h$,.X123X,:s,.C$,.h,:s,.X123X$,.C,<CR>
+map <F4> :e %:p:s,.h$,.X123X,:s,.C$,.h,:s,.X123X$,.C,<CR>
 
 "Functionality
+"au Vimenter * if eval("@%") ==""|e ~/.vim/startup.vim| endif
+set pumheight=5
 set lazyredraw
 set autoread
 set autoindent
@@ -58,13 +60,14 @@ set clipboard=unnamedplus
 autocmd SwapExists * let v:swapchoice = "e"
 autocmd bufwritepost .vimrc source %
 augroup commentConfig
-au!
-autocmd BufEnter * let prepend="#"
-autocmd BufEnter *.bashrc let prepend="#"
-autocmd BufEnter *.vimrc let prepend="\""
-autocmd BufEnter *.C *.h let prepend="//"
-noremap <C-\> :s/^/\=prepend/<CR>  :noh<CR>
-noremap <C-X> :s/<C-R><C-R>=prepend<CR>//<CR> :noh<CR>
+  au!
+  autocmd BufEnter * let prepend="#"
+  autocmd BufEnter *.bashrc let prepend="#"
+  autocmd BufEnter *.vimrc let prepend="\""
+  autocmd BufEnter *.C let prepend="//"
+  autocmd BufEnter *.h let prepend="//"
+  noremap <C-\> :s/^/\=prepend/<CR>  :noh<CR>
+  noremap <C-X> :s/<C-R><C-R>=prepend<CR>//<CR> :noh<CR>
 augroup END
 
 "Formatting
@@ -83,9 +86,9 @@ set nowrap
 syntax on
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup nuToggle
-set number
-autocmd BufEnter,FocusGained,InsertLeave, * set rnu
-autocmd BufLeave,FocusLost,InsertEnter, * set rnu!
+  set number
+  autocmd BufEnter,FocusGained,InsertLeave, * set rnu
+  autocmd BufLeave,FocusLost,InsertEnter, * set rnu!
 augroup end
 
 "NETRW
