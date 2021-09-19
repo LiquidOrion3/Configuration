@@ -1,0 +1,46 @@
+Git notes
+
+
+Commmands
+
+init
+  Initialize local git repository
+clone <repo_url> 
+  Clone a public repository
+status
+  Check status
+add <filename>
+  Add a file to the staging area
+add -A
+  All all new files and changed files to staging area
+rm -r <filename>
+  remove a file
+branch
+  list all branches
+branch <branchname>
+  create a new branch
+branch -d 
+  delete a branch
+checkout <branchname>
+  switch to branch
+checkout -b <branchname>
+  create a branch and switch to it
+checkout -- <filename>
+  discard changes to file
+merge <sourcebranch> <targetbranch>
+  merge a branch to target branch
+log
+  view changes
+log --summary
+  view detailed changes
+commit -m "<commitmessage>"
+  commit files to branch
+diff
+  compare commits
+revert
+  revert existing commits
+
+
+ 
+  
+ 
